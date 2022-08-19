@@ -18,16 +18,18 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Routers
 const route = {
-    info: require('./routes/info/info'),
+    info: require('./api-routers/info/info'),
+    user: require('./api-routers/user/user'),
 };
 //
 
 const pages = {
-    home: { name: "home", route: require(__parentDir + '/page-routers/home/home') },
+    home: { name: "home", route: require('./page-routers/home/home') },
 };
 
 // Api Routing
 app.use('/api/info', route.info);
+app.use('/api/user', route.user);
 //
 
 // Page Routing

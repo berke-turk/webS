@@ -1,0 +1,5 @@
+1: POOL öğrenilecek ve kullanılacak (veritabanı bağlantı kontrolleri) +
+2: POOL'DA senkron bir sorgu çalıştırılacak +
+3: JS CLASSES çalışılacak (extends vs.)
+4: 
+3: DB Modeli eşitlenecek () 
