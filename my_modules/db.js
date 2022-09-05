@@ -17,7 +17,7 @@ const pool = mysql.createPool({
 module.exports.pool = pool;
 
 
-async function connect() {
+/*async function connect() {
     connection = await mysql.createConnection({
         host: process.env.DATABASE_HOST,
         user: process.env.DATABASE_USER,
@@ -50,4 +50,4 @@ async function connect() {
     });
 }
 
-connect();
+connect();*/

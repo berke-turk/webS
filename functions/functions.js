@@ -9,6 +9,7 @@ const moment = require('moment');
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const cookie = require('cookie');
+const userModel = require("../models/user");
 
 class Functions {
     port = 80;
@@ -70,6 +71,26 @@ class Functions {
         });
     }
 
+    // Auth For User And Pool Connection
+    AuthorizationForUserAndPool(req, res, callback) {
+        if (req.headers['authorization'] == null) { res.status(500).json(); return; }
+        let authorization = req.headers['authorization'].split(' ');
+        if (authorization[0] != "Bearer" || authorization[1] == null) { res.status(500).json(); return; }
+
+        db.pool.getConnection().then(async(con) => {
+            let [
+                [result], // queryInfo
+            ] = await con.execute("SELECT id FROM user WHERE token = ?", [authorization[1]]).catch((err) => {
+                res.status(200).json({ success: false, message: "error" });
+            });
+
+            if (!result) {
+                res.status(200).json({ success: false, message: "result is null" });
+            }
+
+            await callback(con, userModel.newUserID({ id: result.id }));
+        });
+    }
 
     Authorization(table, request, response, callback) {
         if (request.headers['authorization'] == null) { response.status(500).json(); return; }

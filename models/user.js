@@ -1,6 +1,6 @@
 class ID {
     constructor(id) {
-        this.id = id;
+        this.id = parseInt(id);
     }
 
     getID() {
@@ -8,21 +8,12 @@ class ID {
     }
 
     setID(id) {
-        this.id = id;
+        this.id = parseInt(id);
     }
 }
 
 class UserView extends ID {
     constructor(id, username, email) {
-        // Super Extends Called
-        super(id);
-        //
-
-        this.username = username;
-        this.email = email;
-    }
-
-    constructor(id, username, email, password, ) {
         // Super Extends Called
         super(id);
         //
