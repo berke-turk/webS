@@ -8,7 +8,7 @@ var path = require('path'),
 
 // Get
 router.get('/', (request, response) => {
-    response.status(200).json({ success: true, parent: __parentDir });
+    response.status(200).json({ success: true, parent: __parentDir, dirname: __dirname });
 });
 
 module.exports = router;
