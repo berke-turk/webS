@@ -71,6 +71,12 @@ class Functions {
         });
     }
 
+    dbConnection(callback) {
+        db.pool.getConnection().then(async(con) => {
+            callback(con);
+        });
+    }
+
     // Auth For User And Pool Connection
     AuthorizationForUserAndPool(req, res, callback) {
         if (req.headers['authorization'] == null) { res.status(500).json(); return; }

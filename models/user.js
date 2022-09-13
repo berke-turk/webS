@@ -13,13 +13,14 @@ class ID {
 }
 
 class UserView extends ID {
-    constructor(id, username, email) {
+    constructor({ id = 0, username = '', email = '', image = '' }) {
         // Super Extends Called
         super(id);
         //
 
         this.username = username;
         this.email = email;
+        this.image = image;
     }
 
     getUser() {
@@ -48,13 +49,13 @@ class UserView extends ID {
 }
 
 class UserModel {
-    newUserID(user) {
-        return new ID(user.id);
+    newUserID(id) {
+        return new ID(id);
     }
 
     newUserView(user) {
         console.log(user.id);
-        return new UserView(user.id, user.username, user.email);
+        return new UserView({ id: user.id, username: user.username, email: user.email, image: user.image });
     }
 }
 

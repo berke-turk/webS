@@ -3,7 +3,7 @@ const bluebird = require('bluebird');
 require('dotenv').config();
 
 // Create the connection pool. The pool-specific settings are the defaults
-const pool = mysql.createPool({
+/*const pool = mysql.createPool({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PWD,
@@ -14,7 +14,7 @@ const pool = mysql.createPool({
 });
 
 
-module.exports.pool = pool;
+module.exports.pool = pool;*/
 
 
 /*async function connect() {

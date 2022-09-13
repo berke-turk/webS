@@ -8,6 +8,8 @@ var path = require('path'),
     __parentDir = path.dirname(process.mainModule.filename);
 funcs.port = process.argv[3] || 80;
 
+fs.writeFileSync('./info.txt', "DENEME!", { encoding: 'utf-8' });
+
 
 // Static use
 app.use('/static', express.static(__dirname + '/static'));
@@ -33,9 +35,9 @@ app.use('/api/user', route.user);
 //
 
 // Page Routing
-app.use('/home', pages.home.route);
+app.use('/', pages.home.route);
 
-app.get('/:search', (request, response) => {
+app.get('/:search', (request, response, next) => {
     response.header('content-type', 'text/html; utf-8');
     let search = request.params.search;
 
@@ -48,6 +50,8 @@ app.get('/:search', (request, response) => {
         if (err) { response.status(400); return; }
         response.end(html, 'utf-8');
     });*/
+
+
 });
 //
 
