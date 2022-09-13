@@ -1,1 +1,3 @@
 DENEME!
+
+DIR_NAME="/home/aboutata/public_html/webS_1/"

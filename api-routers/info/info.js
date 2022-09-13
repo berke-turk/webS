@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const funcs = require('../../functions/functions');
-var db = require('../../my_modules/db');
+var db = require('../../db/db');
 
 // Check Version
 router.post('/user/check/version', (request, response) => {

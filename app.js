@@ -1,21 +1,15 @@
 const express = require('express');
 const app = express();
-const db = require('./my_modules/db');
-const funcs = require('./functions/functions');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-var path = require('path'),
-    __parentDir = path.dirname(process.mainModule.filename);
-funcs.port = process.argv[3] || 80;
-
-fs.writeFileSync('./info.txt', "DENEME!", { encoding: 'utf-8' });
-
+const port = process.argv[3] || 80;
+const consts = require('./consts');
 
 // Static use
-app.use('/static', express.static(__dirname + '/static'));
+app.use('/static', express.static(consts.dir + '/static'));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: process.env.BODY_PARSER_LIMIT }));
 //
 
 // Routers
@@ -60,6 +54,6 @@ app.use('*', (request, response) => {
     return;
 });
 
-app.listen(funcs.port);
+app.listen(port);
 
 console.log("Started the server!");
